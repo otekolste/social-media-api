@@ -60,6 +60,41 @@ module.exports = {
             console.log('Sorry, something went wrong!');
             res.status(500).json({ error: err });
     }      
-  }
+  },
+  // ---------- FRIEND ROUTES ---------------
+
+    async addFriend(req, res) {
+        try {
+            const friendToAdd = await User.findOne({_id: req.params.friendId});
+            const result = await User.findOneAndUpdate(
+                {_id: req.params.userId},
+                {$addToSet: { friends: friendToAdd } },
+                {new: true},
+            )
+            res.status(200).json(result);
+            console.log(`Updated: ${result}`);
+        }
+        catch(err) {
+            console.log('Sorry, something went wrong!');
+            res.status(500).json({ error: err });
+        }
+        
+    },
+    async removeFriend(req, res) {
+        try {
+            const result = await User.findOneAndUpdate(
+                {_id: req.params.userId},
+                {$pull: { friends: req.params.friendId } },
+                {new: true},
+            )
+            res.status(200).json(result);
+            console.log(`Deleted: ${result}`);
+        }
+        catch(err) {
+            console.log('Sorry, something went wrong!');
+            res.status(500).json({ error: err });
+        }
+        
+    }
 };
 
