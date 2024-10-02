@@ -1,16 +1,16 @@
 const router = require('express').Router();
-/*
+
 const {
-  getUsers,
-  getSingleUser,
-  createUser,
-} = require('../../controllers/userController');
+  getThoughts,
+  getSingleThought,
+  createThought,
+} = require('../../controllers/thoughtController');
 
-// /api/users
-router.route('/').get(getUsers).post(createUser);
+// /api/thoughts
+router.route('/').get(getThoughts).post(createThought);
 
-// /api/users/:userId
-router.route('/:username').get(getSingleUser);
-*/
+// /api/users/:thoughtId
+router.route('/:thoughtId').get(getSingleThought);
+
 
 module.exports = router;
