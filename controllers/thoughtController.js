@@ -26,10 +26,24 @@ module.exports = {
   // create a new thought
   async createThought(req, res) {
     try {
-      const result = await Thought.create(req.body);
-      res.json(result);
-    } catch (err) {
-      res.status(500).json(err);
-    }
+        const thought = await Thought.create(req.body);
+        const user = await User.findOneAndUpdate(
+          { username: req.body.username },
+          { $addToSet: { thoughts: thought._id } },
+          { new: true }
+        );
+  
+        if (!user) {
+          return res.status(404).json({
+            message: 'Thought created, but no user could be found!',
+          });
+        }
+  
+        res.json('Brainstormed! 🎉');
+      } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+      }
+  
   },
 }
