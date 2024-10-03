@@ -65,6 +65,21 @@ module.exports = {
       }
   },
   async updateThought(req, res) {
-
+    try {
+        const result = await Thought
+          .findOneAndUpdate(
+            // Finds document with corresponding thought ID
+            { _id: req.params.thoughtId },
+            // Updates document from req.body
+            req.body,
+            // Sets to true so updated document is returned; Otherwise original document will be returned
+            { new: true }
+          );
+        res.status(200).json(result);
+        console.log(`Updated: ${result}`);
+      } catch (err) {
+          console.log('Sorry, something went wrong!');
+          res.status(500).json({ error: err });
+  }      
   }
 }
