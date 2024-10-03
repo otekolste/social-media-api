@@ -1,5 +1,5 @@
-const { Schema, Types } = require('mongoose');
-
+const { Schema, Types } = require("mongoose");
+// Schema to create reaction model
 const reactionSchema = new Schema(
   {
     reactionId: {
@@ -18,7 +18,7 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAt)=> createdAt.toLocaleDateString("en-US"), // Getter to format date 
+      get: (createdAt) => createdAt.toLocaleDateString("en-US"), // Getter to format date
     },
   },
   {

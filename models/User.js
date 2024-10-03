@@ -50,8 +50,8 @@ userSchema
   });
 
 userSchema.pre("findOneAndDelete", async function (next) {
+  // Middleware; this function gets called before 'findOneAndDelete' gets called on an User document, and deletes all the thoughts written by the user
   const doc = await User.findOne(this.getQuery());
-  console.log(doc);
   console.log(`Deleting thoughts brainstormed by ${doc.username}`);
   await Thought.deleteMany({ username: doc.username });
   next();
