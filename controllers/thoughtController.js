@@ -39,11 +39,32 @@ module.exports = {
           });
         }
   
-        res.json('Brainstormed! 🎉');
+        res.json('Brainstormed!');
       } catch (err) {
         console.log(err);
         res.status(500).json(err);
       }
   
   },
+  async deleteThought(req, res) {
+    try {
+        const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
+        if (!thought) {
+          return res.status(404).json({ message: 'No thought with this id!' });
+        }
+  
+        const user = await User.findOneAndUpdate(
+          { thoughts: req.params.thoughtId },
+          { $pull: { thoughts: req.params.thoughtId } },
+          { new: true }
+        );
+        console.log(user);
+        res.json({ message: 'Thought successfully deleted!' });
+      } catch (err) {
+        res.status(500).json(err);
+      }
+  },
+  async updateThought(req, res) {
+
+  }
 }
