@@ -77,7 +77,8 @@ And new reactions can be created using the following format:
 
 ```
 {
-    "username"
+    "username": "example",
+    "reactionBody": "reaction text goes here",
 }
 ```
 
