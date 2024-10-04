@@ -44,7 +44,7 @@ and start testing the routes!
 
 ## Usage
 
-Check out a walkthrough video testing all of the routes
+Check out a walkthrough video testing all of the routes [here!](https://drive.google.com/file/d/1rpdd68wHAB10t4ARSj7ItozB3Ry5TrBe/view?usp=sharing)
 
 To use the API routes, use Insomnia or another API route tester. The routes are as follows:
 
