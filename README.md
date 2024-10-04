@@ -44,6 +44,8 @@ and start testing the routes!
 
 ## Usage
 
+Check out a walkthrough video testing all of the routes
+
 To use the API routes, use Insomnia or another API route tester. The routes are as follows:
 
 - `/api/users`: GET all users or POST a new user
@@ -68,7 +70,7 @@ New thoughts should be created in the following format:
 ```
 {
     "username":"example",
-    "thoughtText": "example text goes here",
+    "thoughtText": "example text goes here"
 
 }
 ```
@@ -78,7 +80,7 @@ And new reactions can be created using the following format:
 ```
 {
     "username": "example",
-    "reactionBody": "reaction text goes here",
+    "reactionBody": "reaction text goes here"
 }
 ```
 
